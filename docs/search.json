@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Вказівки до самостійної роботи студентів з курсу “Психометрія інтелекту”"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Вступ",
+    "section": "",
+    "text": "Цей посібник допоможе вам засвоїти практичні навички, необхідні для перевірки властивостей психологічних тестів інтелекту, знань і компетенцій."
+  },
+  {
+    "objectID": "task01.html",
+    "href": "task01.html",
+    "title": "2  Завдання 1",
+    "section": "",
+    "text": "Перше завдання: створення форми, підготовка та імпорт даних"
+  },
+  {
+    "objectID": "task02.html",
+    "href": "task02.html",
+    "title": "3  Завдання 2",
+    "section": "",
+    "text": "library(readxl)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(sjmisc)\n\nstudents <- read_excel(\n  \"Тест інтелекту (Відповіді).xlsx\",\n  sheet = \"Data View\"\n)\n\ntable(students$a01)\n\n\nзаточувати     різати \n         3        214 \n\nstudents <- mutate(\n  students,\n  fa01 = factor(a01, levels = c(\"гострий\", \"різати\", \"заточувати\")),\n  ra01 = recode(a01, \"гострий\" = 1, \"різати\" = 2, \"заточувати\" = 3)\n)\n\nfrq(students, fa01)\n\nfa01 <categorical> \n# total N=217 valid N=217 mean=2.01 sd=0.12\n\nValue      |   N | Raw % | Valid % | Cum. %\n-------------------------------------------\nгострий    |   0 |  0.00 |    0.00 |   0.00\nрізати     | 214 | 98.62 |   98.62 |  98.62\nзаточувати |   3 |  1.38 |    1.38 | 100.00\n<NA>       |   0 |  0.00 |    <NA> |   <NA>\n\nbarplot(\n  height = table(students$fa01),\n  col = c(\"red\", \"green\", \"red\")\n)"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "4  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  }
+]
