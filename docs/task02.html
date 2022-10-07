@@ -243,8 +243,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">fa02 =</span> <span class="fu">factor</span>(a02, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"посмішка"</span>, <span class="st">"успіх"</span>, <span class="st">"щасливий"</span>))</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(students<span class="sc">$</span>fa02, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"«Стомлений» так відноситься до «Робота», як «Гордий» до:"</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(students, fa01<span class="sc">:</span>fa02, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>lab <span class="ot">&lt;-</span> <span class="st">"«Стомлений» так відноситься до «Робота», як «Гордий» до:"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(students<span class="sc">$</span>fa02, <span class="st">"label"</span>) <span class="ot">&lt;-</span> lab</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(students, fa01<span class="sc">:</span>fa02, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>fa01 &lt;categorical&gt; 
 # total N=217 valid N=217 mean=2.01 sd=0.12
