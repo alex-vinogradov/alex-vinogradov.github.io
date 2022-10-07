@@ -251,14 +251,16 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjmisc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Learn more about sjmisc with 'browseVignettes("sjmisc")'.</code></pre>
+<pre><code>Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">mutate</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  students,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fa01 =</span> <span class="fu">factor</span>(a01, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"гострий"</span>, <span class="st">"різати"</span>, <span class="st">"заточувати"</span>))</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(students, fa01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fa01 =</span> <span class="fu">factor</span>(a01, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"гострий"</span>, <span class="st">"різати"</span>, <span class="st">"заточувати"</span>)),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">fa02 =</span> <span class="fu">factor</span>(a02, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"посмішка"</span>, <span class="st">"успіх"</span>, <span class="st">"щасливий"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(students<span class="sc">$</span>fa02, <span class="st">"label"</span>) <span class="ot">&lt;-</span> <span class="st">"«Стомлений» так відноситься до «Робота», як «Гордий» до:"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(students, fa01<span class="sc">:</span>fa02, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>fa01 &lt;categorical&gt; 
 # total N=217 valid N=217 mean=2.01 sd=0.12
@@ -268,7 +270,26 @@ Value      |   N | Raw % | Valid % | Cum. %
 гострий    |   0 |  0.00 |    0.00 |   0.00
 різати     | 214 | 98.62 |   98.62 |  98.62
 заточувати |   3 |  1.38 |    1.38 | 100.00
-&lt;NA&gt;       |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+&lt;NA&gt;       |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+«Стомлений» так відноситься до «Робота», як «Гордий» до: (fa02) &lt;categorical&gt; 
+# total N=217 valid N=217 mean=1.98 sd=0.26
+
+Value    |   N | Raw % | Valid % | Cum. %
+-----------------------------------------
+посмішка |  10 |  4.61 |    4.61 |   4.61
+успіх    | 202 | 93.09 |   93.09 |  97.70
+щасливий |   5 |  2.30 |    2.30 | 100.00
+&lt;NA&gt;     |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;
+
+sex &lt;character&gt; 
+# total N=217 valid N=217 mean=1.22 sd=0.41
+
+Value    |   N | Raw % | Valid % | Cum. %
+-----------------------------------------
+Жіноча   | 170 | 78.34 |   78.34 |  78.34
+Чоловіча |  47 | 21.66 |   21.66 | 100.00
+&lt;NA&gt;     |   0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
 </div>
 <p>Візуальне подання у вигляді стовпчикової діаграми</p>
