@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Психометрія інтелекту",
+    "section": "",
+    "text": "Психометрія рулить."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Вступ",
+    "section": "",
+    "text": "Див. Knuth (1984) стосовно програмування.\n\n\n\n\nKnuth, Donald E. 1984. «Literate Programming». Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "task02.html",
+    "href": "task02.html",
+    "title": "Завдання 2",
+    "section": "",
+    "text": "library(readxl)\n\nstudents <- read_excel(\n  \"Тест інтелекту (Відповіді).xlsx\",\n  sheet = \"Data View\"\n)\n\nТепер подивимося на\n\ntable(students$a01)\n\n\nзаточувати     різати \n         3        214 \n\n\nЯк можемо бачити, в цьому розподілі відсутній варіант «гострий», оскільки його ніхто не вибрав. Крім того.\n\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(sjmisc)\n\nstudents <- mutate(\n  students,\n  fa01 = factor(a01, levels = c(\"гострий\", \"різати\", \"заточувати\"))\n)\n\nfrq(students, fa01)\n\nfa01 <categorical> \n# total N=217 valid N=217 mean=2.01 sd=0.12\n\nValue      |   N | Raw % | Valid % | Cum. %\n-------------------------------------------\nгострий    |   0 |  0.00 |    0.00 |   0.00\nрізати     | 214 | 98.62 |   98.62 |  98.62\nзаточувати |   3 |  1.38 |    1.38 | 100.00\n<NA>       |   0 |  0.00 |    <NA> |   <NA>\n\n\nВізуальне подання у вигляді стовчикової діаграми\n\nbarplot(\n  height = table(students$fa01),\n  col = c(\"red\", \"green\", \"red\")\n)\n\n\n\n\nМожна також виконати інше перетворення рядкової змінної: перекодувати її у кількісну і призначити мітки значень. Це дозволить користуватися цієї змінною як кількісною і якісною, перетворюючі при потребі на фактор за допомогою спеціальної функції:\n\nstudents <- mutate(\n  students,\n  ra01 = recode(a01, \"гострий\" = 1, \"різати\" = 2, \"заточувати\" = 3)\n)\n\nattr(students$ra01, \"labels\") <- c(\n  \"гострий\" = 1, \"різати\" = 2, \"заточувати\" = 3\n)\n\nfrq(students, ra01)\n\nra01 <numeric> \n# total N=217 valid N=217 mean=2.01 sd=0.12\n\nValue |      Label |   N | Raw % | Valid % | Cum. %\n---------------------------------------------------\n    1 |    гострий |   0 |  0.00 |    0.00 |   0.00\n    2 |     різати | 214 | 98.62 |   98.62 |  98.62\n    3 | заточувати |   3 |  1.38 |    1.38 | 100.00\n <NA> |       <NA> |   0 |  0.00 |    <NA> |   <NA>\n\n\nЯк можете бачити, функція вміє використовувати мітки альтернатив. Ось функція, яка перетворить на фактор і їй не доведеться передавати мітки альтернатив.\n\ntofactor <- function(x) {\n  labs <- attr(x, \"labels\")\n  factor(x, labels = names(labs), levels = labs)\n}\n\nu <- tofactor(students$ra01)\ntable(u)\n\nu\n   гострий     різати заточувати \n         0        214          3"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "Заключення",
+    "section": "",
+    "text": "В заключення варто сказати"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Література",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  }
+]
